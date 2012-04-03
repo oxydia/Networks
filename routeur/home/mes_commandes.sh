@@ -32,3 +32,9 @@ iptables -A FORWARD -i eth2 -o eth0 -p tcp --sport 80 -s 18.0.0.0/8 -d 10.18.0.0
 iptables -A FORWARD -i eth2 -o eth1 -p tcp --dport 80 -s 18.0.0.0/8 -d 10.28.0.0/16 -j ACCEPT
 iptables -A FORWARD -i eth1 -o eth2 -p tcp --sport 80 -s 10.28.0.0/16 -d 18.0.0.0/8 -j ACCEPT
 
+# SSH DMZ from WWW
+iptables -A FORWARD -i eth2 -o eth1 -p tcp --dport 30022 -s 18.0.0.0/8 -d 10.28.0.0/16 -j ACCEPT
+iptables -A FORWARD -i eth1 -o eth2 -p tcp --sport 30022 -s 10.28.0.0/16 -d 18.0.0.0/8 -j ACCEPT
+
+iptables -t nat -A PREROUTING -s 18.0.0.0/8 -d 18.0.0.1 -p tcp --dport 22 -j DNAT --to-destination 10.28.0.10:30022
+
