@@ -1,2 +1,0 @@
-ifconfig eth2 18.0.0.10 netmask 255.0.0.0 up
-route add default gw 18.0.0.1
