@@ -1,5 +1,6 @@
 ifconfig eth0 10.18.0.1 netmask 255.255.0.0 up
 ifconfig eth2 18.0.0.1 netmask 255.0.0.0 up
 ifconfig tun1 192.168.1.1 netmask 255.255.255.0 up
+chmod 0770 /root/config_vpn.sh
+chmod 0770 /root/cap_eth2.sh
 openvpn --remote 18.0.1.1 --port 50000 --dev tun1 --ifconfig 192.168.1.1 192.168.1.2 --verb 5 &
-route add -net 10.100.0.0 netmask 255.255.0.0 gw 192.168.1.2 dev tun1
