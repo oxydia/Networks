@@ -1,0 +1,7 @@
+Cette branche permet de tester la configuration du VPN.
+Les commandes sont situées dans les fichier routeur.startup et routeur2.startup.
+Lorsque les deux routeurs sont démarrés, il faut entrer ces commandes sur chacun d'eux :
+/root/conf_vpn.sh (cette commande permet d'ajouter la ligne de routage à travers le vpn qui vient d'être créé)
+/root/cap_eth2.sh (permet d'exécuter tcpdump pour capturer tous les paquets échangés entre les routeurs via Internet)
+
+On peut alors tester le bon fonctionnement du réseau en pingant secret2 (10.100.0.10) à partir de secret.
